@@ -123,4 +123,15 @@ public class TestSuite
         yield return new WaitForSeconds(0.1f);
         Assert.Greater(ship.transform.position.y, yPos);
     }
+
+
+    [UnityTest]
+    public IEnumerator ShipMovesDown()
+    {
+        Ship ship = game.GetShip();
+        float yPos = ship.transform.position.y;
+        ship.MoveDown();
+        yield return new WaitForSeconds(0.1f);
+        Assert.Less(ship.transform.position.y, yPos);
+    }
 }
