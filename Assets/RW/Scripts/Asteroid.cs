@@ -37,7 +37,8 @@ public class Asteroid : MonoBehaviour
     public float speed = 1;
     private float maxY = -5;
 
-    private float _velocity;
+    [HideInInspector]
+    public float _velocity;
 
     [HideInInspector]
     public float minVelocity;
@@ -48,6 +49,13 @@ public class Asteroid : MonoBehaviour
 
     private void Start()
     {
+        if(maxVelocity < minVelocity)
+        {
+            minVelocity = minVelocity * maxVelocity; //a=50 (5*10)      
+            maxVelocity = minVelocity / maxVelocity; //b=5 (50/10)      
+            minVelocity = minVelocity / maxVelocity; //a=10 (50/5)    
+        }
+
         _velocity = minVelocity;
     }
 

@@ -32,6 +32,27 @@ public class TestSuite
     }
 
     [UnityTest]
+    public IEnumerator AsteroidsIncreaseVelocity()
+    {
+        GameObject asteroid = game.GetSpawner().SpawnAsteroid();
+
+        float initialVelocity = asteroid.GetComponent<Asteroid>()._velocity;
+        yield return new WaitForSeconds(1.0f);
+        Assert.Greater(asteroid.GetComponent<Asteroid>()._velocity, initialVelocity);
+    }
+
+
+    public IEnumerator AsteroidsDontIncreaseVelocityPastMaximum()
+    {
+        GameObject asteroid = game.GetSpawner().SpawnAsteroid();
+
+        float initialVelocity = asteroid.GetComponent<Asteroid>()._velocity;
+        asteroid.GetComponent<Asteroid>()._velocity = asteroid.GetComponent<Asteroid>().maxVelocity + 1;
+        yield return new WaitForSeconds(1.0f);
+        Assert.Less(asteroid.GetComponent<Asteroid>()._velocity, asteroid.GetComponent<Asteroid>().maxVelocity);
+    }
+
+    [UnityTest]
     public IEnumerator GameOverOccursOnAsteroidCollision()
     {
         GameObject asteroid = game.GetSpawner().SpawnAsteroid();
