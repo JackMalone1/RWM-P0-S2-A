@@ -90,4 +90,13 @@ public class TestSuite
         Assert.AreEqual(game.score, 1);
     }
 
+    [UnityTest]
+    public IEnumerator Score0()
+    {
+        game.NewGame();
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.AreEqual(game.score, 0);
+    }
 }
