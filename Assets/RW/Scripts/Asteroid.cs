@@ -55,7 +55,7 @@ public class Asteroid : MonoBehaviour
     private void Update()
     {
         _velocity = Mathf.MoveTowards(_velocity, maxVelocity, changeVelocityPerFrame);
-        
+        _velocity = Mathf.Clamp(_velocity, minVelocity, maxVelocity);
         Move();
     }
 
