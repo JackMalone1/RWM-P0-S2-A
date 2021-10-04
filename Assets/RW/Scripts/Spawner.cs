@@ -45,6 +45,10 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private GameObject asteroid4;
 
+    public float minVelocity;
+    public float maxVelocity;
+    public float changeVelocityPerFrame;
+
     public void BeginSpawning()
     {
         StartCoroutine("Spawn");
@@ -66,18 +70,33 @@ public class Spawner : MonoBehaviour
         {
             case 1:
                 asteroid = Instantiate(asteroid1);
+                asteroid.GetComponent<Asteroid>().minVelocity = minVelocity;
+                asteroid.GetComponent<Asteroid>().maxVelocity = maxVelocity;
+                asteroid.GetComponent<Asteroid>().changeVelocityPerFrame = changeVelocityPerFrame;
                 break;
             case 2:
                 asteroid = Instantiate(asteroid2);
+                asteroid.GetComponent<Asteroid>().minVelocity = minVelocity;
+                asteroid.GetComponent<Asteroid>().maxVelocity = maxVelocity;
+                asteroid.GetComponent<Asteroid>().changeVelocityPerFrame = changeVelocityPerFrame;
                 break;
             case 3:
                 asteroid = Instantiate(asteroid3);
+                asteroid.GetComponent<Asteroid>().minVelocity = minVelocity;
+                asteroid.GetComponent<Asteroid>().maxVelocity = maxVelocity;
+                asteroid.GetComponent<Asteroid>().changeVelocityPerFrame = changeVelocityPerFrame;
                 break;
             case 4:
                 asteroid = Instantiate(asteroid4);
+                asteroid.GetComponent<Asteroid>().minVelocity = minVelocity;
+                asteroid.GetComponent<Asteroid>().maxVelocity = maxVelocity;
+                asteroid.GetComponent<Asteroid>().changeVelocityPerFrame = changeVelocityPerFrame;
                 break;
             default:
                 asteroid = Instantiate(asteroid1);
+                asteroid.GetComponent<Asteroid>().minVelocity = minVelocity;
+                asteroid.GetComponent<Asteroid>().maxVelocity = maxVelocity;
+                asteroid.GetComponent<Asteroid>().changeVelocityPerFrame = changeVelocityPerFrame;
                 break;
         }
 

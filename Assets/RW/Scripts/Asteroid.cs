@@ -37,14 +37,32 @@ public class Asteroid : MonoBehaviour
     public float speed = 1;
     private float maxY = -5;
 
+    private float _velocity;
+
+    [HideInInspector]
+    public float minVelocity;
+    [HideInInspector]
+    public float maxVelocity;
+    [HideInInspector]
+    public float changeVelocityPerFrame;
+
+    private void Start()
+    {
+        _velocity = minVelocity;
+    }
+
+
     private void Update()
     {
+        _velocity = Mathf.MoveTowards(_velocity, maxVelocity, changeVelocityPerFrame);
+        
         Move();
     }
 
     public void Move()
     {
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
+        transform.Translate(Vector3.down * Time.deltaTime * speed * _velocity);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         if (transform.position.y < maxY)
         {
             Destroy(gameObject);
